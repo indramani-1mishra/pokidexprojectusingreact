@@ -1,0 +1,19 @@
+.itemcontainer
+{
+   
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: space-around;
+        align-items: center;
+    }
+    h1{
+        color: rgb(20, 146, 16);
+        text-align: center;
+        margin: 0;
+        padding: 10px;
+        text-transform: capitalize;
+        
+        letter-spacing: 3px;
+    }
+
