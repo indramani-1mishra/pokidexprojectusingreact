@@ -1,0 +1,29 @@
+.pokiman-list
+{
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+  margin-top: 50px;
+  padding: 10px;
+}
+.controlls
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.controlls>button
+{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    cursor: pointer;
+    background-color: rgb(78, 204, 200);
+    color: white;
+    font-size: 18px;
+    margin-right: 10px;
+}

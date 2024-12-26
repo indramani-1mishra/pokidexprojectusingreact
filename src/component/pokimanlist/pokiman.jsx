@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import "./pokimon.css"
 import Pokimon from "../pokimonui/pokimonui";
 
 function Pokiman() {
@@ -40,6 +40,7 @@ function Pokiman() {
    return (
      <div>
        <div>Pokémon lists</div>
+       <div className="pokiman-list">
        {islodoing ? (
          "loading...."
        ) : (
@@ -52,8 +53,17 @@ function Pokiman() {
              />
            );
          })
+
        )}
-     </div>
+       </div>
+        <div className="controlls">
+          
+          <button>next</button>
+          <button>prev</button>
+        </div>
+       
+       </div>
+     
    );
 }
 
