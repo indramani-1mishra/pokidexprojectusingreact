@@ -6,11 +6,16 @@ import Pokimon from "../pokimonui/pokimonui";
 function Pokiman() {
    let [pokimanList, setpokimanList] = useState([]);
    let [islodoing, setislodoing] = useState(true);
+   let [pokidexUrl, setpokidexUrl] = useState('https://pokeapi.co/api/v2/pokemon');
+   let [nextPokeUrl, setnextPokeUrl] = useState();
+   let [prevPokeUrl, setprevPokeUrl] = useState();
 
    async function DownlodePokiman() {
-     const response = await axios.get('https://pokeapi.co/api/v2/pokemon');
+    setislodoing(true);
+     const response = await axios.get(pokidexUrl);
      const resultarry = response.data.results;
-
+      setnextPokeUrl(response.data.next);
+     setprevPokeUrl(response.data.previous);
      // Fetch all Pokémon details concurrently
      const pokimonpromices = resultarry.map((pokimon) => axios.get(pokimon.url));
      const pokimondata = await axios.all(pokimonpromices);
@@ -35,7 +40,7 @@ function Pokiman() {
 
    useEffect(() => {
      DownlodePokiman();
-   }, []);
+   }, [pokidexUrl]);
 
    return (
      <div>
@@ -58,8 +63,10 @@ function Pokiman() {
        </div>
         <div className="controlls">
           
-          <button>next</button>
-          <button>prev</button>
+        <button disabled={prevPokeUrl===null} onClick={()=>setpokidexUrl(prevPokeUrl)} id="next">previous</button>
+          <button disabled={nextPokeUrl===null} onClick={()=>setpokidexUrl(nextPokeUrl)} id="prev">next</button>
+          
+          
         </div>
        
        </div>
@@ -68,3 +75,5 @@ function Pokiman() {
 }
 
 export default Pokiman;
+
+
